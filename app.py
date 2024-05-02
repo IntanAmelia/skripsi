@@ -5,7 +5,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-from google.colab import drive
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import MinMaxScaler
