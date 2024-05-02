@@ -5,28 +5,27 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-from sklearn.preprocessing import LabelEncoder
-from sklearn.cluster import DBSCAN
-from sklearn.preprocessing import StandardScaler
+from google.colab import drive
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.impute import KNNImputer
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import seaborn as sns
-from sklearn.metrics import silhouette_score
-from sklearn.impute import KNNImputer
+import math
+import tensorflow as tf
+
+from tensorflow import keras
+from tensorflow.keras import layers
+from keras.optimizers import Adam
 
 
 def main():
     st.set_page_config(
-    page_title="Clustering Rekomendasi Anime Menggunakan Metode DBSCAN"
+    page_title="PREDIKSI CURAH HUJAN MENGGUNAKAN LSTM DAN K-NN DALAM IMPUTASI MISSING VALUE"
 )
-    st.title('Clustering Rekomendasi Anime Menggunakan Metode DBSCAN')
-    st.write("""Kelompok 1 :""")
-    st.write("""Intan Amelia/200411100138""")
-    st.write("""Roy Suwanda/210411100046""")
-    st.write("""Muhammad Nadda Khatani/210411100069""")
-    st.write("""Moh. Fadil Abdillah/210411100142 """)
-
+    st.title('PREDIKSI CURAH HUJAN MENGGUNAKAN LSTM DAN K-NN DALAM IMPUTASI MISSING VALUE')
+    
     tab1, tab2, tab3, tab4, tab5= st.tabs(["Data Understanding", "Preprocessing", "Modeling", "Visualisasi", "Implementation"])
 
     with tab1:
@@ -37,28 +36,16 @@ def main():
 
         st.markdown("""
         Link Dataset:
-        https://www.kaggle.com/code/tanetboss/user-clustering-for-anime-recommendation/input?select=anime.csv
+        https://dataonline.bmkg.go.id
         """, unsafe_allow_html=True)
 
 
-        st.write('Dataset ini berisi tentang rekomendasi anime')
-        df = pd.read_csv("https://raw.githubusercontent.com/RoySuwanda-21-046/data/main/Data_Anime_fix(1).csv")
-        st.write("Dataset Anime : ")
+        st.write('Dataset ini berisi tentang curah hujan')
+        missing_values = ['8888']
+        df = pd.read_excel('Dataset_Curah_Hujan.xlsx', na_values = missing_values)
+        st.write("Dataset Curah Hujan : ")
         st.write(df)
-        st.write("Penjelasan kolom-kolom yang ada")
-
-        st.write("""
-        <ol>
-        <li>anime_id : kode unik yang mengidentifikasi sebuah anime</li>
-        <li>name : judul lengkap dari anime</li>
-        <li>genre : genre atau kategori dari masing-masing judul </li>
-        <li>type : jenis tayangan dari anime, misal movie, tv, ova </li>
-        <li>episodes : jumlah episode setiap anime </li>
-        <li>rating : rata-rata rating dari masing-masing anime</li>
-        <li>members   : jumlah banyaknya anggota dari sebuah komunitas anime</li>
-        </ol>
-        """,unsafe_allow_html=True)
-
+        
     with tab2:
         st.write("""
         <h5>Preprocessing Data</h5>
