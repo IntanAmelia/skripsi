@@ -65,8 +65,9 @@ def main():
         ('Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN', 'Hapus Missing Value', 'Normalisasi Data','Split Data'))
         if preprocessing == 'Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN':
             st.write("Dataset setelah imputasi missing value pada fitur curah hujan (RR) : ")
-
-            knni = KNNImputer(n_neighbors=3)
+            
+            fitur_imputasi = ['RR']
+            knn = KNNImputer(n_neighbors=3)
             df.iloc[:,:] = knni.fit_transform(df)
 
             
