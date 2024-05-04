@@ -47,23 +47,24 @@ def main():
         
     with tab2:
         st.write("""
-        <h5>Preprocessing Data</h5>
+        <h5>Imputasi Missing Value Menggunakan KNN</h5>
         <br>
         """, unsafe_allow_html=True)
         st.write("""
-        Pada proses ini dataset akan dipreprocessing dalam beberapa tahapan, yakni sebagai berikut : 
+        Pada skenario ini akan dibagi menjadi beberapa parameter, yakni sebagai berikut : 
         <ol>
-        <li> Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN </li>
-        <li> Hapus Missing Value </li>
-        <li> Normalisasi Data </li>
-        <li> Split Data </li>
+        <li> K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25 </li>
+        <li> K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50 </li>
+        <li> K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75 </li>
         </ol>
         """,unsafe_allow_html=True)
 
         preprocessing = st.radio(
         "Preprocessing Data",
-        ('Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN', 'Hapus Missing Value', 'Normalisasi Data','Split Data'))
-        if preprocessing == 'Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN':
+        ('K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25',
+         'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
+         'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
+        if preprocessing == 'K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
             st.write("Dataset setelah imputasi missing value pada fitur curah hujan (RR) : ")
             
             
