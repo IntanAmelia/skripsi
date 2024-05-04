@@ -77,7 +77,8 @@ def main():
 
             #menggabungkan data imputasi dengan dataset asli
             data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
-
+            st.write(data_imputasi_df)
+            
             st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
             missing_value2 = data_imputasi_df.isnull().sum()
             st.write(missing_value2)
@@ -95,6 +96,7 @@ def main():
 
             #menggabungkan data imputasi dengan dataset asli
             data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
+            st.write(data_imputasi_df)
 
             st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
             missing_value2 = data_imputasi_df.isnull().sum()
@@ -113,6 +115,7 @@ def main():
 
             #menggabungkan data imputasi dengan dataset asli
             data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
+            st.write(data_imputasi_df)
 
             st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
             missing_value2 = data_imputasi_df.isnull().sum()
