@@ -68,7 +68,7 @@ def main():
             
             fitur_imputasi = ['RR']
             knn = KNNImputer(n_neighbors=3)
-            df.iloc[:,:] = knni.fit_transform(df)
+            df.iloc[:,:] = knn.fit_transform(df)
 
             
             # #fitur rating yang akan diimputasi
