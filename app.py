@@ -86,7 +86,7 @@ def main():
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50type':
             #fitur rating yang akan diimputasi
             fitur_imputasi = ['RR']
-            preprocessing = KNNImputer(n_neighbors=3)
+            preprocessing = KNNImputer(n_neighbors=4)
 
             #imputasi pada dataset
             data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
@@ -105,7 +105,7 @@ def main():
         elif preprocessing == 'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
             #fitur rating yang akan diimputasi
             fitur_imputasi = ['RR']
-            preprocessing = KNNImputer(n_neighbors=3)
+            preprocessing = KNNImputer(n_neighbors=5)
 
             #imputasi pada dataset
             data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
