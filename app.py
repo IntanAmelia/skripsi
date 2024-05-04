@@ -83,7 +83,7 @@ def main():
             missing_value2 = data_imputasi_df.isnull().sum()
             st.write(missing_value2)
  
-        elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50type':
+        elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             #fitur rating yang akan diimputasi
             fitur_imputasi = ['RR']
             preprocessing = KNNImputer(n_neighbors=4)
