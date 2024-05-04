@@ -25,7 +25,7 @@ def main():
 )
     st.title('PREDIKSI CURAH HUJAN MENGGUNAKAN LSTM DAN K-NN DALAM IMPUTASI MISSING VALUE')
     
-    tab1, tab2, tab3, tab4, tab5= st.tabs(["Data Understanding", "Preprocessing", "Modeling", "Visualisasi", "Implementation"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Data Understanding", "Imputasi Missing Value Menggunakan KNN", "Hapus Data yang terdapat Missing Value", "Prediksi Selanjutnya"])
 
     with tab1:
         st.write("""
