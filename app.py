@@ -67,7 +67,7 @@ def main():
             st.write("Dataset setelah imputasi missing value pada fitur curah hujan (RR) : ")
 
             knni = KNNImputer(n_neighbors=3)
-            df.iloc[:,:] = knni.fit_transform(df_1)
+            df.iloc[:,:] = knni.fit_transform(df)
 
             
             # #fitur rating yang akan diimputasi
