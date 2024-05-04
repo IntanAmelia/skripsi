@@ -45,100 +45,105 @@ def main():
         st.write("Dataset Curah Hujan : ")
         st.write(df)
         
-    # with tab2:
-    #     st.write("""
-    #     <h5>Preprocessing Data</h5>
-    #     <br>
-    #     """, unsafe_allow_html=True)
-    #     st.write("""
-    #     Pada proses ini dataset akan dipreprocessing dalam beberapa tahapan, yakni sebagai berikut : 
-    #     <ol>
-    #     <li>Imputasi missing value pada fitur rating </li>
-    #     <li>Imputasi missing value pada fitur genre dan type </li>
-    #     <li>Label encoding pada fitur genre dan type </li>
-    #     </ol>
-    #     """,unsafe_allow_html=True)
+    with tab2:
+        st.write("""
+        <h5>Preprocessing Data</h5>
+        <br>
+        """, unsafe_allow_html=True)
+        st.write("""
+        Pada proses ini dataset akan dipreprocessing dalam beberapa tahapan, yakni sebagai berikut : 
+        <ol>
+        <li> Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN </li>
+        <li> Hapus Missing Value </li>
+        <li> Normalisasi Data </li>
+        <li> Split Data </li>
+        </ol>
+        """,unsafe_allow_html=True)
 
-    #     preprocessing = st.radio(
-    #     "Preprocessing Data",
-    #     ('Imputasi missing value rating', 'Imputasi missing value genre & type', 'Label encoding genre & type'))
-    #     if preprocessing == 'Imputasi missing value rating':
-    #         st.write("Dataset setelah imputasi missing value pada fitur rating : ")
+        preprocessing = st.radio(
+        "Preprocessing Data",
+        ('Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN', 'Hapus Missing Value', 'Normalisasi Data','Split Data'))
+        if preprocessing == 'Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN':
+            st.write("Dataset setelah imputasi missing value pada fitur curah hujan (RR) : ")
 
-    #         #fitur rating yang akan diimputasi
-    #         fitur_imputasi = ['rating']
-    #         preprocessing = KNNImputer(n_neighbors=3)
+            knni = KNNImputer(n_neighbors=3)
+            df.iloc[:,:] = knni.fit_transform(df_1)
 
-    #         #imputasi pada dataset
-    #         data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
+            
+            # #fitur rating yang akan diimputasi
+            # fitur_imputasi = ['rating']
+            # preprocessing = KNNImputer(n_neighbors=3)
 
-    #         #mengkonversi hasil imputasai menjadi data frame
-    #         data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
+            # #imputasi pada dataset
+            # data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
 
-    #         #menggabungkan data imputasi dengan dataset asli
-    #         data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
+            # #mengkonversi hasil imputasai menjadi data frame
+            # data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
 
-    #         #menyimpan dataset yang telah diimputasi ke file csv
-    #         data_imputasi_df.to_csv('dataset_imputasi_rating_knn.csv', index=True)
-    #         st.write(data_imputasi_df)
+            # #menggabungkan data imputasi dengan dataset asli
+            # data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
 
-    #         st.write('Mengecek apakah imputasi fitur rating berhasil :')
-    #         missing_value2 = data_imputasi_df.isnull().sum()
-    #         st.write(missing_value2 )
+            # #menyimpan dataset yang telah diimputasi ke file csv
+            # data_imputasi_df.to_csv('dataset_imputasi_rating_knn.csv', index=True)
+            # st.write(data_imputasi_df)
+
+            st.write('Mengecek apakah imputasi fitur rating berhasil :')
+            missing_value2 = data_imputasi_df.isnull().sum()
+            st.write(missing_value2 )
  
-    #     elif preprocessing == 'Imputasi missing value genre & type':
-    #         st.write("Dataset setelah imputasi missing value pada genre & type : ")
+        # elif preprocessing == 'Imputasi missing value genre & type':
+        #     st.write("Dataset setelah imputasi missing value pada genre & type : ")
 
-    #         df2=pd.read_csv('dataset_imputasi_rating_knn.csv')
-    #         #menghitung modus dari fitur 'genre'
-    #         modus_genre = df2['genre'].mode()[0]
+        #     df2=pd.read_csv('dataset_imputasi_rating_knn.csv')
+        #     #menghitung modus dari fitur 'genre'
+        #     modus_genre = df2['genre'].mode()[0]
 
-    #         #menggantikan missing value dengan modus
-    #         df2['genre'].fillna(modus_genre, inplace=True)
+        #     #menggantikan missing value dengan modus
+        #     df2['genre'].fillna(modus_genre, inplace=True)
 
-    #         #menghitung modus dari fitur 'type'
-    #         modus_type = df2['type'].mode()[0]
+        #     #menghitung modus dari fitur 'type'
+        #     modus_type = df2['type'].mode()[0]
 
-    #         #menggantikan mising value dengan modus
-    #         df2['type'].fillna(modus_type, inplace=True)
+        #     #menggantikan mising value dengan modus
+        #     df2['type'].fillna(modus_type, inplace=True)
 
-    #         #menyimpan dataset yang telah diimputasi ke file csv
-    #         df2.to_csv('dataset_imputasi_finish.csv', index=True)
+        #     #menyimpan dataset yang telah diimputasi ke file csv
+        #     df2.to_csv('dataset_imputasi_finish.csv', index=True)
 
-    #         st.write(df2)
+        #     st.write(df2)
 
-    #         st.write('Mengecek apakah imputasi fitur genre & type berhasil :')
-    #         missing_value3 = df2.isnull().sum()
-    #         st.write(missing_value3 )
+        #     st.write('Mengecek apakah imputasi fitur genre & type berhasil :')
+        #     missing_value3 = df2.isnull().sum()
+        #     st.write(missing_value3 )
 
-    #     elif preprocessing == 'Label encoding genre & type':
-    #         st.write("Dataset setelah label encoding genre & type : ")
+        # elif preprocessing == 'Label encoding genre & type':
+        #     st.write("Dataset setelah label encoding genre & type : ")
 
-    #         df3=pd.read_csv('dataset_imputasi_finish.csv')
-    #         #inisialisasi objek LabelEncoder
-    #         label_encoder = LabelEncoder()
+        #     df3=pd.read_csv('dataset_imputasi_finish.csv')
+        #     #inisialisasi objek LabelEncoder
+        #     label_encoder = LabelEncoder()
 
-    #         #melakukan label encoding pada fitur 'genre'
-    #         df3['genre_encode'] = label_encoder.fit_transform(df3['genre'])
+        #     #melakukan label encoding pada fitur 'genre'
+        #     df3['genre_encode'] = label_encoder.fit_transform(df3['genre'])
 
-    #         #menampilkan mapping antara nilai asli dengan nilai yang terenkripsi
-    #         label_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
+        #     #menampilkan mapping antara nilai asli dengan nilai yang terenkripsi
+        #     label_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
 
-    #         #melakukan label encoding pada fitur 'type'
-    #         df3['type_encoder'] = label_encoder.fit_transform(df3['type'])
+        #     #melakukan label encoding pada fitur 'type'
+        #     df3['type_encoder'] = label_encoder.fit_transform(df3['type'])
 
-    #         #menampilkan mapping antara nilai asli dengan nilai yang terenkripsi
-    #         label_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
+        #     #menampilkan mapping antara nilai asli dengan nilai yang terenkripsi
+        #     label_mapping = dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))
 
-    #         #menyimpan dataset yang telah dilakukan label encode
-    #         df3.to_csv('dataset_imputasi_finish_encode_1.csv', index=True)
+        #     #menyimpan dataset yang telah dilakukan label encode
+        #     df3.to_csv('dataset_imputasi_finish_encode_1.csv', index=True)
                         
-    #         st.write(df3)
-    #         df4=pd.read_csv('dataset_imputasi_finish_encode_1.csv')
+        #     st.write(df3)
+        #     df4=pd.read_csv('dataset_imputasi_finish_encode_1.csv')
 
-    #         st.write('Mengecek apakah lab genre & type berhasil :')
-    #         missing_value4 = df4.isnull().sum()
-    #         st.write(missing_value4)
+        #     st.write('Mengecek apakah lab genre & type berhasil :')
+        #     missing_value4 = df4.isnull().sum()
+        #     st.write(missing_value4)
 
     # with tab3:
     #     st.write("""
