@@ -66,27 +66,23 @@ def main():
         if preprocessing == 'Imputasi Missing Value pada fitur curah hujan (RR) menggunakan metode KNN':
             st.write("Dataset setelah imputasi missing value pada fitur curah hujan (RR) : ")
             
-            fitur_imputasi = ['RR']
-            knn = KNNImputer(n_neighbors=3)
-            df.iloc[:,:] = knn.fit_transform(df)
-
             
-            # #fitur rating yang akan diimputasi
-            # fitur_imputasi = ['rating']
-            # preprocessing = KNNImputer(n_neighbors=3)
+            #fitur rating yang akan diimputasi
+            fitur_imputasi = ['RR']
+            preprocessing = KNNImputer(n_neighbors=3)
 
-            # #imputasi pada dataset
-            # data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
+            #imputasi pada dataset
+            data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
 
-            # #mengkonversi hasil imputasai menjadi data frame
-            # data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
+            #mengkonversi hasil imputasai menjadi data frame
+            data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
 
-            # #menggabungkan data imputasi dengan dataset asli
-            # data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
+            #menggabungkan data imputasi dengan dataset asli
+            data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
 
-            # #menyimpan dataset yang telah diimputasi ke file csv
-            # data_imputasi_df.to_csv('dataset_imputasi_rating_knn.csv', index=True)
-            # st.write(data_imputasi_df)
+            #menyimpan dataset yang telah diimputasi ke file csv
+            data_imputasi_df.to_csv('dataset_imputasi.csv', index=True)
+            st.write(data_imputasi_df)
 
             st.write('Mengecek apakah imputasi fitur rating berhasil :')
             missing_value2 = data_imputasi_df.isnull().sum()
