@@ -126,7 +126,7 @@ def main():
             # model.compile(optimizer=optimizer, loss='mean_squared_error')
             # history = model.fit(x_train, y_train, batch_size= 32, epochs=12, verbose=1)
             # Memuat model yang telah disimpan
-            load_model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
+            load_model = keras.models.load_model('model_lstm_knn_s1.h5')
             
             # Menampilkan ringkasan model
             st.write(load_model.summary())
