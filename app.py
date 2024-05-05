@@ -121,6 +121,15 @@ def main():
             model.add(layers.Dense(25))
             model.add(layers.Dense(1))
             model.summary()
+
+            optimizer = Adam(learning_rate=0.01)
+            model.compile(optimizer=optimizer, loss='mean_squared_error')
+            history = model.fit(x_train, y_train, batch_size= 32, epochs=12, verbose=1)
+
+            predictions = model.predict(x_test)
+            predictions = scaler.inverse_transform(predictions)
+            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            st.write(rmse)
         
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             #fitur rating yang akan diimputasi
