@@ -103,6 +103,7 @@ def main():
             
             x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
             st.write(x_train.shape)
+            
             test_data = scaled_data[training_data_len-25: , : ]
             x_test = []
             y_test = values[training_data_len:]
@@ -112,13 +113,14 @@ def main():
             
             x_test = np.array(x_test)
             x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-
+            st.write(x_test.shape)
+            
             model = keras.Sequential()
             model.add(layers.LSTM(100, return_sequences=True, input_shape=(x_train.shape[1], 1)))
             model.add(layers.LSTM(100, return_sequences=False))
             model.add(layers.Dense(25))
             model.add(layers.Dense(1))
-            st.write(model.summary())
+            model.summary()
         
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             #fitur rating yang akan diimputasi
