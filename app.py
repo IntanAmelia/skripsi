@@ -126,13 +126,13 @@ def main():
             # model.compile(optimizer=optimizer, loss='mean_squared_error')
             # history = model.fit(x_train, y_train, batch_size= 32, epochs=12, verbose=1)
             # Memuat model yang telah disimpan
-            model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
+            load_model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
             
             # Menampilkan ringkasan model
-            st.write(model.summary())
+            st.write(load_model.summary())
             
             # Menggunakan model untuk membuat prediksi
-            predictions = model.predict(x_test)
+            predictions = load_model.predict(x_test)
             predictions = scaler.inverse_transform(predictions)
             rmse = np.sqrt(np.mean(predictions - y_test)**2)
             st.write(rmse)
