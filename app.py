@@ -17,7 +17,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from keras.optimizers import Adam
-
+from keras.models import load_model
 
 def main():
     st.set_page_config(
