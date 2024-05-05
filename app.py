@@ -82,7 +82,44 @@ def main():
             st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
             missing_value2 = data_imputasi_df.isnull().sum()
             st.write(missing_value2)
- 
+
+            df_2 = data_imputasi_df.copy().drop(columns=['Tanggal'])
+
+            scaler = MinMaxScaler()
+            scaled_data = scaler.fit_transform(df_2)
+
+            values = df_2.values
+            training_data_len = math.ceil(len(values)* 0.7)
+            train_data = scaled_data[0: training_data_len , :]
+            
+            x_train = []
+            y_train = []
+            
+            for i in range(25, len(train_data)):
+                x_train.append(train_data[i-25:i, 0])
+                y_train.append(train_data[i, 0])
+            
+            x_train, y_train = np.array(x_train), np.array(y_train)
+            
+            x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+
+            test_data = scaled_data[training_data_len-25: , : ]
+            x_test = []
+            y_test = values[training_data_len:]
+            
+            for i in range(25, len(test_data)):
+              x_test.append(test_data[i-25:i, 0])
+            
+            x_test = np.array(x_test)
+            x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+
+            model = keras.Sequential()
+            model.add(layers.LSTM(100, return_sequences=True, input_shape=(x_train.shape[1], 1)))
+            model.add(layers.LSTM(100, return_sequences=False))
+            model.add(layers.Dense(25))
+            model.add(layers.Dense(1))
+            st.write(model.summary())
+        
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             #fitur rating yang akan diimputasi
             fitur_imputasi = ['RR']
