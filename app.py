@@ -65,74 +65,74 @@ def main():
          'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
          'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
         if preprocessing == 'K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
-            # #fitur rating yang akan diimputasi
-            # fitur_imputasi = ['RR']
-            # preprocessing = KNNImputer(n_neighbors=3)
+            #fitur rating yang akan diimputasi
+            fitur_imputasi = ['RR']
+            preprocessing = KNNImputer(n_neighbors=3)
 
-            # #imputasi pada dataset
-            # data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
+            #imputasi pada dataset
+            data_imputasi = preprocessing.fit_transform(df[fitur_imputasi])
 
-            # #mengkonversi hasil imputasai menjadi data frame
-            # data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
+            #mengkonversi hasil imputasai menjadi data frame
+            data_imputasi_df = pd.DataFrame(data_imputasi, columns=fitur_imputasi)
 
-            # #menggabungkan data imputasi dengan dataset asli
-            # data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
-            # st.write(data_imputasi_df)
+            #menggabungkan data imputasi dengan dataset asli
+            data_imputasi_df = df.drop(fitur_imputasi, axis=1).join(data_imputasi_df)
+            st.write(data_imputasi_df)
             
-            # st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
-            # missing_value2 = data_imputasi_df.isnull().sum()
-            # st.write(missing_value2)
+            st.write('Mengecek apakah imputasi fitur Curah Hujan berhasil :')
+            missing_value2 = data_imputasi_df.isnull().sum()
+            st.write(missing_value2)
 
-            # df_2 = data_imputasi_df.copy().drop(columns=['Tanggal'])
+            df_2 = data_imputasi_df.copy().drop(columns=['Tanggal'])
 
-            # scaler = MinMaxScaler()
-            # scaled_data = scaler.fit_transform(df_2)
+            scaler = MinMaxScaler()
+            scaled_data = scaler.fit_transform(df_2)
 
-            # values = df_2.values
-            # training_data_len = math.ceil(len(values)* 0.7)
-            # train_data = scaled_data[0: training_data_len , :]
+            values = df_2.values
+            training_data_len = math.ceil(len(values)* 0.7)
+            train_data = scaled_data[0: training_data_len , :]
             
-            # x_train = []
-            # y_train = []
+            x_train = []
+            y_train = []
             
-            # for i in range(25, len(train_data)):
-            #     x_train.append(train_data[i-25:i, 0])
-            #     y_train.append(train_data[i, 0])
+            for i in range(25, len(train_data)):
+                x_train.append(train_data[i-25:i, 0])
+                y_train.append(train_data[i, 0])
             
-            # x_train, y_train = np.array(x_train), np.array(y_train)
+            x_train, y_train = np.array(x_train), np.array(y_train)
             
-            # x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
-            # st.write(x_train.shape)
+            x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+            st.write(x_train.shape)
             
-            # test_data = scaled_data[training_data_len-25: , : ]
-            # x_test = []
-            # y_test = values[training_data_len:]
+            test_data = scaled_data[training_data_len-25: , : ]
+            x_test = []
+            y_test = values[training_data_len:]
             
-            # for i in range(25, len(test_data)):
-            #   x_test.append(test_data[i-25:i, 0])
+            for i in range(25, len(test_data)):
+              x_test.append(test_data[i-25:i, 0])
             
-            # x_test = np.array(x_test)
-            # x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-            # st.write(x_test.shape)
+            x_test = np.array(x_test)
+            x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+            st.write(x_test.shape)
             
-            # model = keras.Sequential()
-            # model.add(layers.LSTM(100, return_sequences=True, input_shape=(x_train.shape[1], 1)))
-            # model.add(layers.LSTM(100, return_sequences=False))
-            # model.add(layers.Dense(25))
-            # model.add(layers.Dense(1))
-            # model.summary()
+            model = keras.Sequential()
+            model.add(layers.LSTM(100, return_sequences=True, input_shape=(x_train.shape[1], 1)))
+            model.add(layers.LSTM(100, return_sequences=False))
+            model.add(layers.Dense(25))
+            model.add(layers.Dense(1))
+            model.summary()
 
-            # optimizer = Adam(learning_rate=0.01)
-            # model.compile(optimizer=optimizer, loss='mean_squared_error')
-            # history = model.fit(x_train, y_train, batch_size= 32, epochs=12, verbose=1)
-            # Memuat model yang telah disimpan
-            load_model = keras.models.load_model('model_lstm_knn_s1.h5')
+            optimizer = Adam(learning_rate=0.01)
+            model.compile(optimizer=optimizer, loss='mean_squared_error')
+            history = model.fit(x_train, y_train, batch_size= 32, epochs=12, verbose=1)
             
-            # Menampilkan ringkasan model
-            st.write(load_model.summary())
+            
+            # # Memuat model yang telah disimpan
+            # model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
+
             
             # Menggunakan model untuk membuat prediksi
-            predictions = load_model.predict(x_test)
+            predictions = model.predict(x_test)
             predictions = scaler.inverse_transform(predictions)
             rmse = np.sqrt(np.mean(predictions - y_test)**2)
             st.write(rmse)
