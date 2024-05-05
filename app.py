@@ -102,7 +102,7 @@ def main():
             x_train, y_train = np.array(x_train), np.array(y_train)
             
             x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
-
+            st.write(x_train.shape)
             test_data = scaled_data[training_data_len-25: , : ]
             x_test = []
             y_test = values[training_data_len:]
