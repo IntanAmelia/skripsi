@@ -136,15 +136,15 @@ def main():
             # Load model
             model = load_model('model_lstm_knn_s3.h5')
 
-            # Memuat data testing (x_test)
-            x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
+            # # Memuat data testing (x_test)
+            # x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
             
-            # Melakukan prediksi
-            predictions = model.predict(model, x_test)
+            # # Melakukan prediksi
+            # predictions = model.predict(model, x_test)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
-            st.write(predictions)
+            # st.write(predictions)
             
         #elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             # #fitur rating yang akan diimputasi
