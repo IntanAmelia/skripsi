@@ -134,7 +134,7 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = load_model('model_lstm_knn_s1.h5')
+            model = load_model('model_lstm_knn_s3.h5')
 
             # Memuat data testing (x_test)
             x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
