@@ -8,3 +8,4 @@ seaborn
 tensorflow
 keras
 openpyxl
+joblib
