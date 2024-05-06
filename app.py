@@ -139,7 +139,7 @@ def main():
             # Memuat data testing (x_test)
             x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
             st.write("x_test:")
-            st.write(predictions)
+            st.write(x_test)
 
             # Melakukan prediksi
             #predictions = model.predict(model, x_test)
