@@ -133,19 +133,14 @@ def main():
             # rmse = np.sqrt(np.mean(predictions - y_test)**2)
             # st.write(rmse)
             
-            
+            # Load model
             model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
-        
-            # Fungsi untuk melakukan prediksi
-            predictions = model.predict(x_test)
-            
+
             # Memuat data testing (x_test)
-            # Ganti dengan cara Anda untuk memuat data testing
-            # Contoh:
             x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
             
             # Melakukan prediksi
-            predictions = predict(model, x_test)
+            predictions = model.predict(model, x_test)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
