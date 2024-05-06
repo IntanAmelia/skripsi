@@ -134,17 +134,19 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
+            #model = tf.keras.models.load_model('model_lstm_knn_s1.h5')
 
             # Memuat data testing (x_test)
             x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
-            
+            st.write("x_test:")
+            st.write(predictions)
+
             # Melakukan prediksi
-            predictions = model.predict(model, x_test)
+            #predictions = model.predict(model, x_test)
             
             # Menampilkan hasil prediksi
-            st.write("Hasil Prediksi:")
-            st.write(predictions)
+            #st.write("Hasil Prediksi:")
+            #st.write(predictions)
             
         #elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             # #fitur rating yang akan diimputasi
