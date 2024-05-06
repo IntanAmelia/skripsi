@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import math
 import tensorflow as tf
+import joblib
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -134,7 +135,7 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = load_model('model_lstm_knn_s3.h5')
+            model = joblib.load('model_lstm_knn_s3.h5')
 
             # # Memuat data testing (x_test)
             # x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
