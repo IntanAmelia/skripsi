@@ -140,7 +140,7 @@ def main():
             #model = load_model('model_lstm_knn_s1.h5')
             #model = pickle.load(open('model_lstm_knn_s1.sav', 'rb'))
             
-            model = tf.keras.models.load_model('model_lstm_knn_s1.keras')
+            model = keras.models.load_model('model_lstm_knn_s1.keras')
             
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s2.csv')
