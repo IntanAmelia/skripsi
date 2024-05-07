@@ -19,7 +19,6 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from keras.optimizers import Adam
 from keras.layers import Dense, LSTM, Dropout
-from tensorflow.keras.models import load_model
 
 def main():
     st.set_page_config(
