@@ -1,7 +1,7 @@
 # app.py
 #import library
 
-import pickle
+#import pickle
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -135,7 +135,7 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = pickle.load(open('model_lstm_knn_s1.pkl', 'rb'))
+            model = joblib.load('model_lstm_knn_s2.sav')
 
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s2.csv')
