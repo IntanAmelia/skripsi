@@ -1,10 +1,12 @@
 # app.py
 #import library
+pip install keras
+
 import pickle
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import keras
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import MinMaxScaler
