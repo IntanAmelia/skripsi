@@ -135,10 +135,10 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = joblib.load('model_lstm_knn_s3.h5')
+            model = joblib.load('model_lstm_knn_s2.sav')
 
             # # Memuat data testing (x_test)
-            # x_test = pd.read_excel('Dataset_Curah_Hujan.xlsx')
+            # x_test = pd.read_csv('x_test_knn_s2.csv')
             
             # # Melakukan prediksi
             # predictions = model.predict(model, x_test)
