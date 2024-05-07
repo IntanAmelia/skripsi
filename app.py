@@ -20,6 +20,7 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from keras.optimizers import Adam
 from keras.layers import Dense, LSTM, Dropout
+from keras.models import load_model
 
 def main():
     st.set_page_config(
@@ -135,7 +136,8 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = joblib.load('model_lstm_knn_s1_j.pkl')
+            #model = joblib.load('model_lstm_knn_s1_j.pkl')
+            model = load_model(model_lstm_knn_s1.h5)
 
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s2.csv')
