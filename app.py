@@ -1,6 +1,5 @@
 # app.py
 #import library
-pip install keras
 
 import pickle
 import streamlit as st
