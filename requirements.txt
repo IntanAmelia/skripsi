@@ -9,4 +9,3 @@ tensorflow
 keras
 openpyxl
 joblib
-pickle5
