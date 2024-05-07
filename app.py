@@ -135,7 +135,7 @@ def main():
             # st.write(rmse)
             
             # Load model
-            model = pickle.load(open('model_lstm_knn_s2.pkl'))
+            model = pickle.load(open('model_lstm_knn_s2.pkl', 'rb'))
 
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s2.csv')
