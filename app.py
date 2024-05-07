@@ -140,7 +140,7 @@ def main():
             x_test = pd.read_csv('x_test_knn_s2.csv')
             
             # Melakukan prediksi
-            predictions = model.predict(model, x_test)
+            predictions = model.predict(x_test)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
