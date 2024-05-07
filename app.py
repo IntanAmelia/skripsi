@@ -137,7 +137,7 @@ def main():
             
             # Load model
             #model = joblib.load('model_lstm_knn_s1_j.pkl')
-            model = load_model(model_lstm_knn_s1.h5)
+            model = load_model('model_lstm_knn_s1.h5')
 
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s2.csv')
