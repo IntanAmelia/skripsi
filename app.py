@@ -69,7 +69,7 @@ def main():
             # model = joblib.load('model_lstm_knn_s1_j.pkl')
             # model = load_model('model_lstm_knn_s1.h5')
             # model = keras.models.load_model('model_lstm_knn_s1.keras')
-            model = pickle.load(open('thyroidmodel (2).sav', 'rb'))
+            model = pickle.load(open('model_lstm_knn_s1.sav', 'rb'))
             st.write(model.summary())
             
             # # Memuat data testing (x_test)
