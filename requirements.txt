@@ -8,4 +8,5 @@ seaborn
 tensorflow
 keras
 openpyxl
+pickle
 joblib
