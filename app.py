@@ -14,8 +14,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import math
 import joblib
-
+import tensorflow as tf
 from keras.optimizers import Adam
+from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
 from keras.models import load_model
 
@@ -69,7 +70,8 @@ def main():
             # model = joblib.load('model_lstm_knn_s1_j.pkl')
             # model = load_model('model_lstm_knn_s1.h5')
             # model = keras.models.load_model('model_lstm_knn_s1.keras')
-            model = pickle.load(open('model_lstm_knn_s1_coco.pkl', 'rb'))
+            # model = pickle.load(open('model_lstm_knn_s1_coco.pkl', 'rb'))
+            model = tf.keras.models.load_model('model_lstm_knn_s1.hdf5')
             st.write(model.summary())
             
             # # Memuat data testing (x_test)
