@@ -13,11 +13,8 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
 import math
-import tensorflow as tf
 import joblib
 
-from tensorflow import keras
-from tensorflow.keras import layers
 from keras.optimizers import Adam
 from keras.layers import Dense, LSTM, Dropout
 from keras.models import load_model
