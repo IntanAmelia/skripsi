@@ -5,7 +5,7 @@ streamlit
 pip
 matplotlib
 seaborn
-tensorflow keras
+tensorflow.keras
 openpyxl
 joblib
 tensor
