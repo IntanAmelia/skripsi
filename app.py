@@ -69,17 +69,18 @@ def main():
             # model = joblib.load('model_lstm_knn_s1_j.pkl')
             # model = load_model('model_lstm_knn_s1.h5')
             # model = keras.models.load_model('model_lstm_knn_s1.keras')
-            model = pickle.load(open('model_lstm_knn_s1.sav', 'rb'))
+            model = pickle.load(open('thyroidmodel (2).sav', 'rb'))
+            st.write(model.summary())
             
-            # Memuat data testing (x_test)
-            x_test = pd.read_csv('x_test_knn_s2.csv')
+            # # Memuat data testing (x_test)
+            # x_test = pd.read_csv('x_test_knn_s2.csv')
             
-            # Melakukan prediksi
-            predictions = model.predict(x_test)
+            # # Melakukan prediksi
+            # predictions = model.predict(x_test)
             
-            # Menampilkan hasil prediksi
-            st.write("Hasil Prediksi:")
-            st.write(predictions)
+            # # Menampilkan hasil prediksi
+            # st.write("Hasil Prediksi:")
+            # st.write(predictions)
             
         # elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             
