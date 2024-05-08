@@ -66,11 +66,6 @@ def main():
          'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
          'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
         if preprocessing == 'K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
-            # Load model
-            # model = joblib.load('model_lstm_knn_s1_j.pkl')
-            # model = load_model('model_lstm_knn_s1.h5')
-            # model = keras.models.load_model('model_lstm_knn_s1.keras')
-            # model = pickle.load(open('model_lstm_knn_s1_coco.pkl', 'rb'))
             model = tf.keras.models.load_model('model_lstm_knn_s1.hdf5')
             st.write(model.summary())
             
