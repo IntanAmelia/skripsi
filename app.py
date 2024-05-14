@@ -67,6 +67,7 @@ def main():
          'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
          'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
         if preprocessing == 'K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
+            scaler = MinMaxScaler()
             model_path = 'model_lstm_knn_s1.hdf5'
             model = tf.keras.models.load_model(model_path)
             model_path_pathlib = 'model_lstm_knn_s1.hdf5'
@@ -91,6 +92,7 @@ def main():
             st.write(rmse)
             
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
+            scaler = MinMaxScaler()
             model_path = 'model_lstm_knn_s2.hdf5'
             model = tf.keras.models.load_model(model_path)
             model_path_pathlib = 'model_lstm_knn_s2.hdf5'
@@ -116,6 +118,7 @@ def main():
             st.write(rmse)
             
         elif preprocessing == 'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
+            scaler = MinMaxScaler()
             model_path = 'model_lstm_knn_s3.hdf5'
             model = tf.keras.models.load_model(model_path)
             model_path_pathlib = 'model_lstm_knn_s3.hdf5'
