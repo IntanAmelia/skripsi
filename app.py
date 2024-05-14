@@ -10,6 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
 import seaborn as sns
 import math
@@ -83,7 +84,8 @@ def main():
 
             # Menghitung RMSE
             y_test = pd.read_csv('y_test_knn_s1.csv')
-            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            mse = mean_squared_error(y_test, predictions)
+            rmse = np.sqrt(mse)
             st.write("RMSE :")
             st.write(rmse)
             
@@ -106,7 +108,8 @@ def main():
             
             # Menghitung RMSE
             y_test = pd.read_csv('y_test_knn_s2.csv')
-            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            mse = mean_squared_error(y_test, predictions)
+            rmse = np.sqrt(mse)
             st.write("RMSE :")
             st.write(rmse)
             
@@ -129,7 +132,8 @@ def main():
 
             # Menghitung RMSE
             y_test = pd.read_csv('y_test_knn_s3.csv')
-            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            mse = mean_squared_error(y_test, predictions)
+            rmse = np.sqrt(mse)
             st.write("RMSE :")
             st.write(rmse)
             
