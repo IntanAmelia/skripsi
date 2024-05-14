@@ -72,15 +72,15 @@ def main():
             model = tf.keras.models.load_model(model_path_pathlib)
             st.write(model.summary())
             
-            # # Memuat data testing (x_test)
-            # x_test = pd.read_csv('x_test_knn_s2.csv')
+            # Memuat data testing (x_test)
+            x_test = pd.read_csv('x_test_knn_s2.csv')
             
-            # # Melakukan prediksi
-            # predictions = model.predict(x_test)
+            # Melakukan prediksi
+            predictions = model.predict(x_test)
             
-            # # Menampilkan hasil prediksi
-            # st.write("Hasil Prediksi:")
-            # st.write(predictions)
+            # Menampilkan hasil prediksi
+            st.write("Hasil Prediksi:")
+            st.write(predictions)
             
         # elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             
