@@ -73,7 +73,7 @@ def main():
             st.write(model.summary())
             
             # Memuat data testing (x_test)
-            x_test = pd.read_csv('x_test_knn_s2.csv')
+            x_test = pd.read_csv('x_test_knn_s1.csv')
             
             # Melakukan prediksi
             predictions = model.predict(x_test)
@@ -83,9 +83,9 @@ def main():
             st.write(predictions)
             
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
-            model_path = 'model_lstm_knn_s1.hdf5'
+            model_path = 'model_lstm_knn_s2.hdf5'
             model = tf.keras.models.load_model(model_path)
-            model_path_pathlib = 'model_lstm_knn_s1.hdf5'
+            model_path_pathlib = 'model_lstm_knn_s2.hdf5'
             model = tf.keras.models.load_model(model_path_pathlib)
             st.write(model.summary())
             
@@ -100,14 +100,14 @@ def main():
             st.write(predictions)
             
         elif preprocessing == 'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
-            model_path = 'model_lstm_knn_s1.hdf5'
+            model_path = 'model_lstm_knn_s3.hdf5'
             model = tf.keras.models.load_model(model_path)
-            model_path_pathlib = 'model_lstm_knn_s1.hdf5'
+            model_path_pathlib = 'model_lstm_knn_s3.hdf5'
             model = tf.keras.models.load_model(model_path_pathlib)
             st.write(model.summary())
             
             # Memuat data testing (x_test)
-            x_test = pd.read_csv('x_test_knn_s2.csv')
+            x_test = pd.read_csv('x_test_knn_s3.csv')
             
             # Melakukan prediksi
             predictions = model.predict(x_test)
