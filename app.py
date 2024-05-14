@@ -83,12 +83,44 @@ def main():
             
         # elif preprocessing == 'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
             
-    # with tab3:
-    #     st.write("""
-    #     <h5>Modelling</h5>
-    #     <br>
-    #     """, unsafe_allow_html=True)
-    
+    with tab3:
+        st.write("""
+        <h5>Menghapus Data yang Terdapat Missing Value</h5>
+        <br>
+        """, unsafe_allow_html=True)
+        st.write("""
+        Pada skenario ini akan dibagi menjadi beberapa parameter, yakni sebagai berikut : 
+        <ol>
+        <li> Batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25 </li>
+        <li> Batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50 </li>
+        <li> Batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75 </li>
+        </ol>
+        """,unsafe_allow_html=True)
+
+        preprocessing = st.radio(
+        "Preprocessing Data",
+        ('Batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25',
+         'Batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
+         'Batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
+        if preprocessing == 'Batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
+            model = tf.keras.models.load_model('model_lstm_knn_s1.hdf5')
+            st.write(model.summary())
+            
+            # # Memuat data testing (x_test)
+            # x_test = pd.read_csv('x_test_knn_s2.csv')
+            
+            # # Melakukan prediksi
+            # predictions = model.predict(x_test)
+            
+            # # Menampilkan hasil prediksi
+            # st.write("Hasil Prediksi:")
+            # st.write(predictions)
+            
+        # elif preprocessing == 'Batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
+            
+        # elif preprocessing == 'Batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
+
+
     # with tab4:
 
     
