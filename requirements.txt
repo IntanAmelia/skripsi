@@ -6,6 +6,5 @@ pip==22.3.1
 matplotlib==3.6.2
 seaborn==0.12.1
 tensorflow == 2.16.1
-keras == 3.0
 openpyxl==3.0.10
 joblib==1.2.0
