@@ -70,7 +70,6 @@ def main():
             model = tf.keras.models.load_model(model_path)
             model_path_pathlib = 'model_lstm_knn_s1.hdf5'
             model = tf.keras.models.load_model(model_path_pathlib)
-            st.write(model.summary())
             
             # Memuat data testing (x_test)
             x_test = pd.read_csv('x_test_knn_s1.csv')
@@ -81,6 +80,12 @@ def main():
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
             st.write(predictions)
+
+            # Menghitung RMSE
+            y_test = pd.read_csv('y_test_knn_s1.csv')
+            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            st.write("RMSE :")
+            st.write(rmse)
             
         elif preprocessing == 'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50':
             model_path = 'model_lstm_knn_s2.hdf5'
@@ -99,6 +104,12 @@ def main():
             st.write("Hasil Prediksi:")
             st.write(predictions)
             
+            # Menghitung RMSE
+            y_test = pd.read_csv('y_test_knn_s2.csv')
+            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            st.write("RMSE :")
+            st.write(rmse)
+            
         elif preprocessing == 'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75':
             model_path = 'model_lstm_knn_s3.hdf5'
             model = tf.keras.models.load_model(model_path)
@@ -115,6 +126,12 @@ def main():
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
             st.write(predictions)
+
+            # Menghitung RMSE
+            y_test = pd.read_csv('y_test_knn_s3.csv')
+            rmse = np.sqrt(np.mean(predictions - y_test)**2)
+            st.write("RMSE :")
+            st.write(rmse)
             
     with tab3:
         st.write("""
