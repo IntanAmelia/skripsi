@@ -77,6 +77,7 @@ def main():
             
             # Melakukan prediksi
             predictions = model.predict(x_test)
+            predictions = scaler.inverse_transform(predictions)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
@@ -101,6 +102,7 @@ def main():
             
             # Melakukan prediksi
             predictions = model.predict(x_test)
+            predictions = scaler.inverse_transform(predictions)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
@@ -125,6 +127,7 @@ def main():
             
             # Melakukan prediksi
             predictions = model.predict(x_test)
+            predictions = scaler.inverse_transform(predictions)
             
             # Menampilkan hasil prediksi
             st.write("Hasil Prediksi:")
