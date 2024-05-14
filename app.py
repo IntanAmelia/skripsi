@@ -66,7 +66,7 @@ def main():
          'K = 4; batch size = 32; hidden layer = 100; learning rate = 0.001; epoch = 25; time step = 50',
          'K = 5; batch size = 32; hidden layer = 100; learning rate = 0.0001; epoch = 50; time step = 75'))
         if preprocessing == 'K = 3; batch size = 32; hidden layer = 100; learning rate = 0.01; epoch = 12; time step = 25':
-            model = pickle.load(open('model_lstm_knn_s1_coco.pkl', 'rb'))
+            model = load_model('model_lstm_knn_s1.h5')
             st.write(model.summary())
             
             # # Memuat data testing (x_test)
